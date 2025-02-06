@@ -28,17 +28,17 @@ body {
     border-radius: 1.5em;
   }
   
-  .card header {
+  .card header, .personal-card header {
     background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
     border-radius: 1.5em 1.5em 0 0;
   }
   
-  .card footer{
+  .card footer, .personal-card footer{
     background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.1));
     border-radius: 0 0 1.5em 1.5em;
   } 
   
-    .card article img {
+    .card article img, .personal-card img {
     max-height: 100%;
     float: right;
     }
@@ -49,7 +49,7 @@ body {
   Main Business Card: #ccc text, Arial font
   */
 
-  .card header, .card footer {
+  .card header, .card footer, .personal-card header, .personal-card footer {
     height: 3em;
     padding: 1em;
     max-height: 5em;
@@ -74,7 +74,16 @@ body {
     line-height: 1.5em;
   }
 
-  .card footer p {
+  .card footer p, .personal-card footer p {
     font-size: 1.5em;
     line-height: 2em;
+  }
+
+  .personal-card{
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    background-color: pink;
+    border: 0.2em solid black;
+    border-radius: 1.5em;
   }
