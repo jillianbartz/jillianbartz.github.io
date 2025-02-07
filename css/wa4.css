@@ -49,13 +49,13 @@ body {
   Main Business Card: #ccc text, Arial font
   */
 
-  .card header, .card footer, .personal-card header, .personal-card footer {
+  .card header, .card footer{
     height: 3em;
     padding: 1em;
     max-height: 5em;
   }
 
-  h2, p{
+  p{
     margin: 0;
   }
 
@@ -70,6 +70,7 @@ body {
   }
 
   h2 {
+    margin: 0;
     font-size: 2em;
     line-height: 1.5em;
   }
@@ -80,10 +81,21 @@ body {
   }
 
   .personal-card{
+    font-family: "Lucida Console", "Courier New", monospace;
     width: 35em;
     height: 22em;
     margin: 5em auto;
-    background-color: pink;
-    border: 0.2em solid black;
+    background-color:  #d58e91;
+    border: 0.2em solid #d58eb4;
+    box-shadow: 0 0 2em #d58eb4;
     border-radius: 1.5em;
+    line-height: 2em;
+  }
+
+  .personal-card header, .personal-card footer {
+    height: 3em;
+    padding: 1em;
+    max-height: 5em;
+    font-weight: bold;
+    color: #a71d68;
   }
