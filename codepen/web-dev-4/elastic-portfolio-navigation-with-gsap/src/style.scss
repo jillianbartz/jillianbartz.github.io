@@ -1,0 +1,81 @@
+@import url("https://use.typekit.net/ers2qgl.css");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #040a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "ff-chambers-sans-web", sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    margin: 1rem 0.5rem;
+    padding: 0.7rem 2.5rem;
+    transition: color 500ms ease;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: skew(-30deg);
+      transition: box-shadow 25ms 25ms;
+
+      rect {
+        shape-rendering: crispEdges;
+        z-index: 0;
+      }
+
+      .blue rect {
+        fill: #05eafa;
+        mix-blend-mode: color-dodge;
+      }
+
+      .pink rect {
+        fill: #ff6bd3;
+      }
+    }
+
+    &.active svg {
+      box-shadow: 0 0 15px 3px #2b8eff;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  nav {
+    flex-direction: column;
+    a {
+      svg {
+        transition: none;
+      }
+      &.active svg {
+      }
+    }
+  }
+}
