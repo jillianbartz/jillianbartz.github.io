@@ -1,0 +1,99 @@
+html{
+background-image: url("/img/wa5background.jpg");
+background-size: cover;
+font-family: 'Helvetica neue', Arial, 'sans serif';
+font-weight: bold;
+}
+
+#top-overlay{
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 25rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+    background-image: linear-gradient(darkgray, lightgray);
+    align-items: center;
+    column-gap: 1rem;
+}
+
+img{
+    height: 4rem;
+    padding-left: 1rem;
+}
+
+#top-overlay-info{
+    justify-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+    text-shadow:2px 2px lightgray;
+    width: 70%;
+    height: 100%;
+    background-color: darkgray;
+}
+
+#bottom-overlay{
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    border: 3px solid black;
+    box-shadow: 0 0 5px black;
+}
+
+#bottom-overlay-box{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    height: 8rem;
+}
+
+#bottom-overlay-teams, #bottom-overlay-scores{
+    display: flex;
+    flex-direction: column;
+}
+
+#bottom-overlay-teams{
+    width: 15rem;
+}
+
+#bottom-overlay-scores{
+    width: 7rem;
+}
+
+#nuggets{
+    font-size: 50px;
+    height: 100%;
+    padding-top: .5rem;
+    background-image: linear-gradient(to right,#0a084a 20%, #2d1fad 50%, #bfa522);
+    padding-left: 1rem;
+}
+
+#heat{
+    font-size: 50px;
+    padding-left: 1rem;
+    padding-top: .5rem;
+    height: 100%;
+    background-image: linear-gradient(to right, #a80518 70%, black);
+}
+
+#nuggets-score, #heat-score{
+    padding-top: .5rem;
+    font-size: 50px;
+    align-self: center;
+    height: 100%;
+    width: 85%;
+    padding-left: 1rem;
+    background-image: linear-gradient(darkgray, lightgray);
+}
+
+#bottom-overlay-time{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    height: 2rem;
+    background-color: black;
+    padding-left: 1rem;
+    font-size: 30px;
+    color: white;
+}
+
