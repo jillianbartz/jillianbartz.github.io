@@ -1,0 +1,92 @@
+html{
+    font-family: 'Helvetica neue', Arial, 'sans serif';
+    color: #e0fbf5;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #589A8D;
+}
+
+h1{
+    color: #e0fbf5;
+}
+
+nav{
+    height: 60vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:20px;
+    background-color: #146551;
+    width: 100%;
+}
+
+nav a{
+    width:10vw;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: #14dfa2;
+}
+
+
+img{
+    width:30vw;
+    height: 30vh;
+    margin-top: 3vw;
+    transition: width 1.5s;
+}
+
+img:hover{
+    width: 10vw;
+}
+
+#red-ball{
+    background-color: #265C4B;
+    width: 80px;
+    height:80px;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: red-ball-animation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes red-ball-animation {
+    0%{
+        bottom: 7vw;
+        left: 0;
+        background-color: #265C4B;
+    }
+    25%{
+        bottom: 2vw;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #14dfa2;
+    }
+    50%{
+        left: 100%;
+        transform: translateX(-100%);
+        background-color: #265C4B;
+        bottom:7vw;
+    }
+    75%{
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 2vw;
+        background-color: #14dfa2;
+    }
+    100%{
+        left: 0;
+        bottom: 7vw;
+        background-color: #265C4B;
+    }
+}
