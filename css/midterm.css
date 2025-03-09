@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
+
+
+body{
+    background-color: #3F0140;
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', sans-serif;
+    padding-bottom: 2rem;
+}
+
+#nav-bar{
+    background-image: url(../img/midterm_header_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 6.5rem;
+    box-shadow: 0 0 10px #5f53ad;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav-bar-title{
+    font-size: 3.5rem;
+    text-shadow: 0 0 5px #fff;
+}
+
+#main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+#main-content-show{
+    width: 70rem;
+    gap: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#main-content-body:hover{
+    box-shadow: 0 0 20px white;
+}
+
+#main-content-info{
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-content-title{
+    font-size: 2rem;
+    padding-bottom: .5rem;
+    text-shadow: 5px 5px 20px #5f53ad;
+    color: white;
+}
+
+#main-content-body{
+    background-color: #200721;
+    border-radius: 1rem;
+    width: 60rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#main-content-rows{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#show-repertoire, #show-conductor{
+    padding-top: 1rem;
+    font-size: .9rem;
+    color: #5f53ad;
+}
+
+#show-body{
+    font-size: .8rem;
+    font-style: italic;
+    color: #5f53ad;
+}
+
+img{
+    width: 10rem;
+}
