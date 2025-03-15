@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
 
+html{
+    scroll-padding-top: 3rem; 
+    /*was having issues with nav bar always cutting off titles when jumping to part of page so added this to fix*/
+}
 
 body{
     background-color: #3F0140;
@@ -9,21 +13,45 @@ body{
     padding-bottom: 2rem;
 }
 
-#nav-bar{
+#header{
     background-image: url(../img/midterm_header_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 6.5rem;
+    height: 7rem;
     box-shadow: 0 0 10px #5f53ad;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: 2rem;
 }
 
-#nav-bar-title{
+#header-title{
     text-shadow: 0 0 5px #fff;
+}
+
+#nav-bar{
+    width: 100%;
+    background-color: #200721;
+    height: 3rem;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: sticky;
+}
+
+#nav-bar-content{
+    color: white;
+    text-decoration: none;
+    font-size: .8rem;
+}
+
+#nav-bar-content:hover{
+    text-shadow: 0px 0px 20px white;
 }
 
 #main-content{
@@ -37,7 +65,7 @@ body{
     box-shadow: 0 0 20px white;
 }
 
-#main-content-show{
+#main-content-show-1, #main-content-show-2, #main-content-show-3, #main-content-show-4, #main-content-show-5, #main-content-show-6, #main-content-show-7, #main-content-show-8, #main-content-show-9, #main-content-show-10{
     gap: 2rem;
     margin-top: 2rem;
     padding-left: 5rem;
@@ -77,12 +105,12 @@ body{
 }
 
 
-@media screen and (min-width: 1249px){
-    #nav-bar-title{
+@media screen and (min-width: 1299px){
+    #header-title{
         font-size: 3.5rem;
     }
 
-    #main-content-show{
+    #main-content-show-1, #main-content-show-2, #main-content-show-3, #main-content-show-4, #main-content-show-5, #main-content-show-6, #main-content-show-7, #main-content-show-8, #main-content-show-9, #main-content-show-10{
         width: 70rem;
         display: flex;
         align-items: center;
@@ -108,9 +136,15 @@ body{
     }
 }
 
-@media screen and (max-width: 1250px){
-    #nav-bar-title{
-        font-size: 1.5rem;
+@media screen and (max-width: 1300px){
+    #nav-bar{
+        /*due to how long the titles are, removing navbar for smaller screens is necessary*/
+        visibility: none;
+        display: none;
+    }
+
+    #header-title{
+        font-size: 2rem;
     }
     img{
         width: 5rem;
