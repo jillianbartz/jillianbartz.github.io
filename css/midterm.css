@@ -54,6 +54,20 @@ body{
     text-shadow: 0px 0px 20px white;
 }
 
+#back-top-content{
+    text-decoration: none;
+    font-size: 3rem;
+    background-color: #fff;
+    opacity: 30%;
+    border-radius: 5%;
+    width: fit-content;
+    height: 2rem;
+    position:fixed;
+    top: 90%;
+    left: 96%;
+    padding: .4rem;
+}
+
 #main-content{
     display: flex;
     flex-direction: column;
@@ -77,7 +91,7 @@ body{
 }
 
 #main-content-title{
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding-bottom: .5rem;
     text-shadow: 5px 5px 20px #5f53ad;
     color: white;
@@ -93,13 +107,17 @@ body{
 }
 
 #show-repertoire, #show-conductor{
-    font-size: .9rem;
+    font-size: 1.4rem;
     color: #5f53ad;
     padding-top: 1rem;
 }
 
+#show-date, #show-location{
+    font-size: 1.2rem;
+}
+
 #show-body{
-    font-size: .8rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: #5f53ad;
 }
@@ -129,6 +147,7 @@ body{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        gap: 2rem;
     }
 
     img{
@@ -141,6 +160,18 @@ body{
         /*due to how long the titles are, removing navbar for smaller screens is necessary*/
         visibility: none;
         display: none;
+    }
+
+    #main-content-show-1, #main-content-show-2, #main-content-show-3, #main-content-show-4, #main-content-show-5, #main-content-show-6, #main-content-show-7, #main-content-show-8, #main-content-show-9, #main-content-show-10{
+        width: 80%;
+    }
+
+    #back-top-content{
+        left: 91%;
+    }
+
+    #header{
+        text-align: center;
     }
 
     #header-title{
