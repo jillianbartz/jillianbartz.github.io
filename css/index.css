@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
 
-html{
-    scroll-padding-top: 3rem; 
-    /*was having issues with nav bar always cutting off titles when jumping to part of page so added this to fix*/
-}
-
 body{
     background-color: #3F0140;
     margin: 0;
@@ -23,34 +18,12 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding-bottom: 2rem;
 }
 
 #header-title{
     text-shadow: 0 0 5px #fff;
-}
-
-#nav-bar{
-    width: 100%;
-    background-color: #200721;
-    height: 3rem;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 2rem;
-    position: sticky;
-}
-
-#nav-bar-content{
-    color: white;
-    text-decoration: none;
-    font-size: .8rem;
-}
-
-#nav-bar-content:hover{
-    text-shadow: 0px 0px 20px white;
 }
 
 #back-top-content{
@@ -63,7 +36,6 @@ body{
     height: 2rem;
     position:fixed;
     top: 90%;
-    left: 96%;
     padding: .4rem;
 }
 
@@ -74,7 +46,7 @@ body{
     gap: 3rem;
 }
 
-#main-content-body:hover{
+.main-content-body:hover{
     box-shadow: 0 0 20px white;
 }
 
@@ -85,23 +57,23 @@ body{
     padding-right: 5rem;
 }
 
-#main-content-rows{
+.main-content-rows{
     font-weight: bold;
     display: flex;
 }
 
-#main-content-info{
+.main-content-info{
     color: white;
 }
 
-#main-content-title{
+.main-content-title{
     font-size: 2.5rem;
     padding-bottom: .5rem;
     text-shadow: 5px 5px 20px #c0b7ff;
     color: white;
 }
 
-#main-content-body{
+.main-content-body{
     background-color: #200721;
     border-radius: 1rem;
     padding: 1rem;
@@ -110,26 +82,25 @@ body{
     gap: 1rem;
 }
 
-#show-conductor{
+.show-conductor{
     font-weight: bold;
 }
 
-#show-repertoire{
+.show-repertoire{
     font-style: italic;
 }
 
-#show-repertoire, #show-conductor{
+.show-repertoire, .show-conductor{
     font-size: 1.4rem;
     color: #c0b7ff;
     padding-top: 1rem;
 }
 
-#show-date, #show-location{
+.show-date, .show-location{
     font-size: 1.3rem;
 }
 
-#show-body{
-    font-size: 1.2rem;
+.show-body{
     color: #c0b7ff;
     margin-left: 1.5rem;
 }
@@ -148,8 +119,36 @@ body{
 
 
 @media screen and (min-width: 1299px){
+    html{
+        scroll-padding-top: 3rem; 
+        /*was having issues with nav bar always cutting off titles when jumping to part of page so added this to fix*/
+    }
+
     #header-title{
         font-size: 3.5rem;
+    }
+    
+    #nav-bar{
+        width: 100%;
+        background-color: #200721;
+        height: 3rem;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 2rem;
+        position: sticky;
+    }
+
+    .nav-bar-content{
+        color: white;
+        text-decoration: none;
+        font-size: .8rem;
+    }
+    
+    .nav-bar-content:hover{
+        text-shadow: 0px 0px 20px white;
     }
 
     #main-content-show-1, #main-content-show-2, #main-content-show-3, #main-content-show-4, #main-content-show-5, #main-content-show-6, #main-content-show-7, #main-content-show-8, #main-content-show-9, #main-content-show-10{
@@ -158,16 +157,20 @@ body{
         align-items: center;
     }
 
-    #main-content-info{
+    .main-content-info{
         display: flex;
         flex-direction: column;
     }
 
-    #main-content-body{
+    .main-content-body{
         width: 60rem;
     }
 
-    #main-content-rows{
+    .show-body{
+        font-size: 1.2rem;
+    }
+
+    .main-content-rows{
         flex-direction: row;
         justify-content: space-between;
         gap: 2rem;
@@ -176,12 +179,20 @@ body{
     img{
         width: 10rem;
     }
+
+    #back-top-content{
+        left: 96%;
+    }
 }
 
 @media screen and (max-width: 1300px){
+    #header-title{
+        font-size: 2rem;
+    }
+
     #nav-bar{
         /*due to how long the titles are, removing navbar for smaller screens is necessary*/
-        visibility: none;
+        visibility: hidden;
         display: none;
     }
 
@@ -189,13 +200,13 @@ body{
         width: 80%;
     }
 
-    #main-content-rows{
+    .main-content-rows{
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
-    #show-body{
+    .show-body{
         font-size: 1.3rem;
     }
 
@@ -203,13 +214,6 @@ body{
         left: 91%;
     }
 
-    #header{
-        text-align: center;
-    }
-
-    #header-title{
-        font-size: 2rem;
-    }
     img{
         width: 5rem;
         justify-content: center;
