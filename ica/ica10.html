@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA 10</title>
+    <style>
+        .box-to-change-background{
+            width: 400px;
+            position: relative;
+            background-color: lightblue;
+            border: none;
+            font-size: larger;
+        }
+        .circle-to-move-spots{
+            height: 75px;
+            width: 75px;
+            background-color: #6ddc5c;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button class = "box-to-change-background">Click me!</button>
+    <div class = "circle-to-move-spots"></div>
+    <script>
+        let box = document.querySelector(".box-to-change-background");
+        box.addEventListener("click", changeBackgroundColor);
+
+        let color = "white";
+
+        function changeBackgroundColor(){
+            if(color == "white"){
+                color = "black";
+            }
+            else{
+                color = "white";
+            }
+            document.body.style.background = color;
+        }
+
+        let circle = document.querySelector(".circle-to-move-spots");
+        circle.addEventListener("click", changeCirclePosition);
+
+        let maxPosition = 20;
+        let minPosition = 300;
+
+        let newTop = "0";
+        let newRight = "0";
+
+        function changeCirclePosition(){
+            newTop = (Math.random() * (maxPosition - minPosition) + minPosition) + "";
+            newRight = (Math.random() * (maxPosition - minPosition) + minPosition) + "";
+            
+            circle.style = "right: " + newRight + "px;" + "top: " + newTop + "px;";
+  
+        }
+    </script>
+</body>
+</html>
