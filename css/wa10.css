@@ -1,0 +1,45 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ded0d8;
+    color: #441808;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  div {
+    padding-bottom: 20px;
+  }
+
+  input[type="text"] {
+    padding: 5px;
+    color: white;
+    background-color: #441808;
+    border: white solid;
+    width: 20rem;
+    border-radius: 20px;
+  }
+
+  p {
+    color: #441808;
+    padding: 10px;
+    width: 70%;
+    visibility: hidden;
+  }
+
+  button{
+    background-color: #441808;
+    color: white;
+    border: white solid;
+    width: 40rem;
+    border-radius: 20px;
+  }
+
+  input[type="radio"]:checked {
+    accent-color: #441808;
+  }
