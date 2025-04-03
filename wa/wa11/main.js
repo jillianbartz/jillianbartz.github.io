@@ -5,7 +5,7 @@ const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
 /* Declaring the array of image filenames */
-const images = ["images/pic1.jpg", "images/pic2.jpg", "images/pic3.jpg", "images/pic4.jpg", "images/pic5.jpg"];
+const images = ["images/pic1.jpeg", "images/pic2.jpeg", "images/pic3.jpeg", "images/pic4.jpeg", "images/pic5.jpeg"];
 
 /* Declaring the alternative text for each image file */
 const altText = ["picture 1", "picture 2", "picture 3", "picture 4", "picture 5"];
@@ -33,6 +33,8 @@ function changeColor(currClass){
         btn.setAttribute("class", "light");
         btn.textContent = "Lighten";
         overlay.style.backgroundColor = "rgb(0 0 0 / 50%)";
+        overlay.style.width = displayedImage.clientWidth + "px";
+        overlay.style.height = displayedImage.clientHeight + "px";
     }
     else{
         btn.setAttribute("class", "dark");
