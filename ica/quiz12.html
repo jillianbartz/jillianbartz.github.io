@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>JSON: Task 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="/css/quiz12.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    const section = document.querySelector('section');
+
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+    let motherInfo = 'The mother cats are called ';
+    let kittenInfo;
+    const requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/tasks/json/sample.json';
+
+    fetch(requestURL)
+    .then(response => response.text())
+    .then(text => displayCatInfo(text))
+
+    function displayCatInfo(catString) {
+      let total = 0;
+      let male = 0;
+
+      const catInfo = JSON.parse(catString);
+      const catNames = [];
+
+      motherInfo += " ";
+
+      for (let i = 0; i < catInfo.length; i++) {
+        const cat = catInfo[i];
+        motherInfo += cat.name;
+
+        if(i === catInfo.length - 1){
+            motherInfo += ".";
+        }
+        else if (i === catInfo.length - 2) {
+            motherInfo += ', and ';
+        } 
+        else if (i < catInfo.length - 2) {
+            motherInfo += ', ';
+        }
+      }
+
+        let kittenAmt = 0;
+        let kittenM = 0;
+        let kittenF = 0;
+
+      for(const cat of catInfo){
+        for(const kitten of cat.kittens){
+            kittenAmt++;
+            if(kitten.gender === "f"){
+                kittenF++;
+            }
+            else{
+                kittenM++;
+            }
+        }
+      }
+
+      kittenInfo = "Total Kitten Amount: " + kittenAmt + ". Total Female Kittens: " + kittenF + ". Total Male Kittens: " + kittenM + ".";
+
+      para1.textContent = motherInfo;
+      para2.textContent = kittenInfo;
+    }
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+  </script>
+
+</html>
