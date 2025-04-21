@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2025 Chris Gannon (https://codepen.io/chrisgannon/pen/pvomdpB)
+Copyright (c) 2025 Kevin Grajeda (https://codepen.io/kevin-carlos-grajeda-a/pen/XJWLdjZ)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
