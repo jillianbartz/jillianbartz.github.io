@@ -1,0 +1,17 @@
+body{
+    position: relative;
+}
+
+.nums{
+    position: absolute;
+    width: 60px;
+    padding: 10px;
+    font-size: 80px;
+    opacity: 0; 
+    transition: opacity 1s ease-out;
+}
+
+.nums:hover{
+    opacity: 1;
+    cursor: pointer;
+}
