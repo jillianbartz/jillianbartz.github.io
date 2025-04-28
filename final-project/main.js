@@ -1,15 +1,35 @@
-var nums = [];
-
 window.onload = function() { //https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
-    function getRandom(min, max) {
-        return Math.random() * (max - min) + min;
-      }
+    const gridDoc = document.getElementById("number-grid");
+
+    const colAmt = Math.floor(gridDoc.clientWidth / 80);
+    const rowAmt = Math.floor(gridDoc.clientHeight / 80);
+
+    var grid = [];
+
+    for (var r = 0; r <= rowAmt; r++) {
+        for (var c = 0; c <= colAmt; c++) {
+            grid.push({row: r, col: c});
+        }
+    }
+
+    console.log(grid);
+
+    function getRandom(min, max){
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    var nums = [];
     
     for(var i = 0; i < 10; i++){
         var currNum = document.getElementById("num" + i);
         nums[i] = currNum;
-        currNum.style.top = getRandom(80, window.innerHeight - 80) + "px";
-        currNum.style.left = getRandom(0, window.innerWidth - 80) + "px";
+        var tempRand = getRandom(0, grid.length);
+        var gridPoint = grid[tempRand];
+
+        currNum.style.gridRow = gridPoint.row;
+        currNum.style.gridColumn = gridPoint.col;
+
+        grid.splice(tempRand, 1);
     }
 }
 
