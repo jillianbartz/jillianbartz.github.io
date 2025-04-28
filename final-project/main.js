@@ -32,10 +32,40 @@ document.addEventListener("mousemove", (e) => {
     }
 })
 
+const number = document.getElementById("number");
+const submitButton = document.getElementById("submit-button");
+const deleteButton = document.getElementById("delete-button"); 
+
 document.addEventListener("click", (e) => {
     if(e.target.className === "nums"){
-        console.log(e.target.textContent)
+        console.log(number.textContent.length)
+        if(number.textContent.length < 12){
+            if(number.textContent.length === 3 || number.textContent.length === 7){
+                number.textContent += "-"
+            }
+            number.textContent += e.target.textContent;
+        }
+    }
+    if(e.target === submitButton){
+        console.log("clicking")
+        number.textContent = "";
+    }
+    if(e.target === deleteButton){
+        console.log("clicking")
+        number.textContent = number.textContent.slice(0, -1);
+        if(number.textContent.at(number.textContent.length - 1) === "-"){
+            number.textContent = number.textContent.slice(0, -1);
+        }
     }
 });
+
+
+
+
+
+
+
+
+
 
 
