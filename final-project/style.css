@@ -1,17 +1,31 @@
-body{
+body, html{
     position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    cursor: none;
 }
+
+::selection {
+    background: none;
+  }
 
 .nums{
     position: absolute;
     width: 60px;
     padding: 10px;
     font-size: 80px;
-    opacity: 0; 
-    transition: opacity 1s ease-out;
 }
 
-.nums:hover{
-    opacity: 1;
-    cursor: pointer;
+#glow-cursor{
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #d3e874;
+    box-shadow: 0px 0px 50px 60px #d3e874;
+}
+
+.button, #number{
+    color: white;
 }

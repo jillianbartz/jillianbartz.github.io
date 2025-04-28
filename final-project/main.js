@@ -8,11 +8,12 @@ window.onload = function() { //https://developer.mozilla.org/en-US/docs/Web/API/
     for(var i = 0; i < 10; i++){
         var currNum = document.getElementById("num" + i);
         nums[i] = currNum;
-        currNum.style.opacity = "0";
-        currNum.style.top = getRandom(0, window.innerHeight - 50) + "px";
-        currNum.style.left = getRandom(0, window.innerWidth - 50) + "px";
+        currNum.style.top = getRandom(80, window.innerHeight - 80) + "px";
+        currNum.style.left = getRandom(0, window.innerWidth - 80) + "px";
     }
 }
+
+const glowLight = document.getElementById("glow-cursor");
 
 cursorPos = {x: 0, y: 0};
 
@@ -20,15 +21,19 @@ document.addEventListener("mousemove", (e) => {
     cursorPos.x = e.clientX;
     cursorPos.y = e.clientY;
 
-    for(var num of nums){
-        var rect = num.getBoundingClientRect();
-        if (cursorPos.x >= rect.left && cursorPos.x <= rect.right && cursorPos.y >= rect.top && cursorPos.y <= rect.bottom){
-            num.style.opacity = "1";
-            console.log("viewing:" + num)
-        } 
-        else{
-            num.style.opacity = "0";
-        }
+    glowLight.style.left = cursorPos.x + "px";
+    glowLight.style.top = cursorPos.y + "px";
+
+    console.log(glowLight.style.top);
+
+
+    if(cursorPos.y <= 80){
+        glowLight.style.visibility = "hidden";
+        document.body.style.cursor = "default";
+    }
+    else{
+        glowLight.style.visibility = "visible";
+        document.body.style.cursor = "none";
     }
 })
 
@@ -47,11 +52,15 @@ document.addEventListener("click", (e) => {
         }
     }
     if(e.target === submitButton){
-        console.log("clicking")
-        number.textContent = "";
+        if(number.textContent.length === 12){
+            alert("Submitted number: " + number.textContent);
+            number.textContent = "";
+        }
+        else{
+            alert("Unable to submit number, please ensure length is correct!");
+        }
     }
     if(e.target === deleteButton){
-        console.log("clicking")
         number.textContent = number.textContent.slice(0, -1);
         if(number.textContent.at(number.textContent.length - 1) === "-"){
             number.textContent = number.textContent.slice(0, -1);
