@@ -22,17 +22,18 @@ function createGrid(){
 
 function placeNumsInGrid(){
     nums = [];
+    var tempGrid = grid.slice(); //make a temp copy of the grid so we do not alter the original when placing
     
     for(var i = 0; i < 10; i++){
         var currNum = document.getElementById("num" + i);
         nums[i] = currNum;
-        var tempRand = getRandom(0, grid.length);
-        var gridPoint = grid[tempRand];
+        var tempRand = getRandom(0, tempGrid.length);
+        var gridPoint = tempGrid[tempRand];
 
         currNum.style.gridRow = gridPoint.row;
         currNum.style.gridColumn = gridPoint.col;
 
-        grid.splice(tempRand, 1);
+        tempGrid.splice(tempRand, 1);
     }
 }
 
@@ -63,8 +64,6 @@ document.addEventListener("mousemove", (e) => {
 
         glowLight.style.left = cursorPos.x + 17 + "px";
         glowLight.style.top = cursorPos.y - 1 +"px";
-
-        console.log(glowLight.style.top);
 
         if(cursorPos.y <= 80){
             glowLight.style.visibility = "hidden";
@@ -119,6 +118,7 @@ document.addEventListener("click", (e) => {
         number.textContent = number.textContent.slice(0, -1);
         if(number.textContent.at(number.textContent.length - 1) === "-"){
             number.textContent = number.textContent.slice(0, -1);
+            console.log(number.textContent.length)
         }
     }
 });
