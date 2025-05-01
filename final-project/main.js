@@ -93,9 +93,11 @@ function hoverOnButtons(){
     
         if (cursorPos.x >= hoverLeft && cursorPos.x <= hoverRight && cursorPos.y >= hoverTop && cursorPos.y <= hoverBottom){
             button.style.visibility = "visible";
+            button.style.opacity = "1";
         } 
         else{
             button.style.visibility = "hidden";
+            button.style.opacity = "0";
         }
     }
 }
@@ -163,6 +165,7 @@ document.addEventListener("click", (e) => {
             alert("Unable to submit number, please ensure length is correct!");
         }
         clickedObject.style.visibility = "hidden";
+        clickedObject.style.opacity = "0";
         moveObjectsAfterClick();
     }
     if(clickedObject === deleteButton){
@@ -171,6 +174,7 @@ document.addEventListener("click", (e) => {
             number.textContent = number.textContent.slice(0, -1);
         }
         clickedObject.style.visibility = "hidden";
+        clickedObject.style.opacity = "0";
         moveObjectsAfterClick();
     }
 });
