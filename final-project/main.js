@@ -178,14 +178,3 @@ document.addEventListener("click", (e) => {
         moveObjectsAfterClick();
     }
 });
-
-
-
-
-
-
-
-
-
-
-
