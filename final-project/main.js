@@ -1,25 +1,26 @@
 var nums = [];
+var grid = [];
 
-window.onload = function() { //https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
+var hideNumbersOnMove = false;
+
+function getRandom(min, max){
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function createGrid(){
     const gridDoc = document.getElementById("number-grid");
 
     const colAmt = Math.floor(gridDoc.clientWidth / 80);
     const rowAmt = Math.floor(gridDoc.clientHeight / 80);
 
-    var grid = [];
-
-    for (var r = 0; r <= rowAmt; r++){
-        for (var c = 0; c <= colAmt; c++){
-            grid.push({row: r, col: c});
+    for (var r = 0; r < rowAmt; r++){
+        for (var c = 0; c < colAmt; c++){
+            grid.push({row: r + 1, col: c + 1});
         }
     }
+}
 
-    console.log(grid);
-
-    function getRandom(min, max){
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
+function placeNumsInGrid(){
     nums = [];
     
     for(var i = 0; i < 10; i++){
@@ -35,11 +36,18 @@ window.onload = function() { //https://developer.mozilla.org/en-US/docs/Web/API/
     }
 }
 
+window.onload = function() { //https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
+    createGrid();
+    placeNumsInGrid();
+}
+
 const glowLight = document.getElementById("glow-cursor");
 
 cursorPos = {x: 0, y: 0};
 
 document.addEventListener("mousemove", (e) => {
+    if(hideNumbersOnMove){return;}
+
     cursorPos.x = e.clientX;
     cursorPos.y = e.clientY;
 
@@ -81,16 +89,24 @@ const submitButton = document.getElementById("submit-button");
 const deleteButton = document.getElementById("delete-button"); 
 
 document.addEventListener("click", (e) => {
-    if(e.target.className === "nums"){
+    var clickedObject = e.target;
+    if(clickedObject.className === "nums"){
         console.log(number.textContent.length)
         if(number.textContent.length < 12){
             if(number.textContent.length === 3 || number.textContent.length === 7){
                 number.textContent += "-"
             }
-            number.textContent += e.target.textContent;
+            number.textContent += clickedObject.textContent;
+
+            clickedObject.style.color = "black";
+            clickedObject.style.textShadow = "none";
+            setTimeout(() => { //we need to delay the new random placement after clicking because the mousemove will show the new spawning of the clicked number if not
+                placeNumsInGrid();
+            }, 200);
         }
+        
     }
-    if(e.target === submitButton){
+    if(clickedObject === submitButton){
         if(number.textContent.length === 12){
             alert("Submitted number: " + number.textContent);
             number.textContent = "";
@@ -99,7 +115,7 @@ document.addEventListener("click", (e) => {
             alert("Unable to submit number, please ensure length is correct!");
         }
     }
-    if(e.target === deleteButton){
+    if(clickedObject === deleteButton){
         number.textContent = number.textContent.slice(0, -1);
         if(number.textContent.at(number.textContent.length - 1) === "-"){
             number.textContent = number.textContent.slice(0, -1);
