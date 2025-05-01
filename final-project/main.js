@@ -99,8 +99,10 @@ document.addEventListener("click", (e) => {
 
             clickedObject.style.color = "black";
             clickedObject.style.textShadow = "none";
+            hideNumbersOnMove = true;
             setTimeout(() => { //we need to delay the new random placement after clicking because the mousemove will show the new spawning of the clicked number if not
                 placeNumsInGrid();
+                hideNumbersOnMove = false;
             }, 200);
         }
         
