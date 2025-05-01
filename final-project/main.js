@@ -1,14 +1,13 @@
-var nums = [];
-var grid = [];
-
-var hideNumbersOnMove = false;
-
 function getRandom(min, max){
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+var grid = [];
+
 function createGrid(){
-    const gridDoc = document.getElementById("number-grid");
+    grid = [];
+
+    const gridDoc = document.getElementById("grid");
 
     const colAmt = Math.floor(gridDoc.clientWidth / 80);
     const rowAmt = Math.floor(gridDoc.clientHeight / 80);
@@ -20,9 +19,12 @@ function createGrid(){
     }
 }
 
+var nums = [];
+var tempGrid;
+
 function placeNumsInGrid(){
     nums = [];
-    var tempGrid = grid.slice(); //make a temp copy of the grid so we do not alter the original when placing
+    tempGrid = grid.slice(); //make a temp copy of the grid so we do not alter the original when placing
     
     for(var i = 0; i < 10; i++){
         var currNum = document.getElementById("num" + i);
@@ -37,23 +39,30 @@ function placeNumsInGrid(){
     }
 }
 
+var buttons = document.getElementsByClassName("button");
+
+function placeButtonsInGrid(){
+    for(var button of buttons){
+        var tempRand = getRandom(0, tempGrid.length);
+        var gridPoint = tempGrid[tempRand];
+
+        button.style.gridRow = gridPoint.row;
+        button.style.gridColumn = gridPoint.col;
+
+        tempGrid.splice(tempRand, 1);
+    }
+}
+
 window.onload = function() { //https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
     createGrid();
     placeNumsInGrid();
+    placeButtonsInGrid();
 }
 
-const glowLight = document.getElementById("glow-cursor");
+var cursorPos = {x: 0, y: 0};
+const hoverRadius = 30;
 
-cursorPos = {x: 0, y: 0};
-
-document.addEventListener("mousemove", (e) => {
-    if(hideNumbersOnMove){return;}
-
-    cursorPos.x = e.clientX;
-    cursorPos.y = e.clientY;
-
-    const hoverRadius = 30;
-
+function hoverOnNumbers(){
     for(var num of nums){
         var rect = num.getBoundingClientRect();
 
@@ -61,16 +70,6 @@ document.addEventListener("mousemove", (e) => {
         var hoverRight = rect.right + hoverRadius;
         var hoverTop = rect.top - hoverRadius;
         var hoverBottom = rect.bottom + hoverRadius;
-
-        glowLight.style.left = cursorPos.x + 17 + "px";
-        glowLight.style.top = cursorPos.y - 1 +"px";
-
-        if(cursorPos.y <= 80){
-            glowLight.style.visibility = "hidden";
-        }
-        else{
-            glowLight.style.visibility = "visible";
-        }
 
         if (cursorPos.x >= hoverLeft && cursorPos.x <= hoverRight && cursorPos.y >= hoverTop && cursorPos.y <= hoverBottom){
             num.style.color = "#d3e874";
@@ -81,11 +80,65 @@ document.addEventListener("mousemove", (e) => {
             num.style.textShadow = "none";
         }
     }
+}
+
+function hoverOnButtons(){    
+    for(var button of buttons){
+        var rect = button.getBoundingClientRect();
+    
+        var hoverLeft = rect.left - hoverRadius;
+        var hoverRight = rect.right + hoverRadius;
+        var hoverTop = rect.top - hoverRadius;
+        var hoverBottom = rect.bottom + hoverRadius;
+    
+        if (cursorPos.x >= hoverLeft && cursorPos.x <= hoverRight && cursorPos.y >= hoverTop && cursorPos.y <= hoverBottom){
+            button.style.visibility = "visible";
+        } 
+        else{
+            button.style.visibility = "hidden";
+        }
+    }
+}
+
+const glowLight = document.getElementById("glow-cursor");
+
+function moveGlowLight(){
+    glowLight.style.left = cursorPos.x + 17 + "px";
+    glowLight.style.top = cursorPos.y - 1 +"px";
+
+    if(cursorPos.y <= 80){
+        glowLight.style.visibility = "hidden";
+    }
+    else{
+        glowLight.style.visibility = "visible";
+    }
+}
+
+var hideNumbersOnMove = false;
+
+document.addEventListener("mousemove", (e) => {
+    if(hideNumbersOnMove){return;}
+
+    cursorPos.x = e.clientX;
+    cursorPos.y = e.clientY;
+
+    moveGlowLight();
+    hoverOnNumbers();
+    hoverOnButtons();
 })
 
-const number = document.getElementById("number");
+function moveObjectsAfterClick(){
+    hideNumbersOnMove = true;
+    setTimeout(() => { //we need to delay the new random placement after clicking because the mousemove will show the new spawning of the clicked number if not
+        placeNumsInGrid();
+        placeButtonsInGrid();
+        hideNumbersOnMove = false;
+    }, 200);
+}
+
 const submitButton = document.getElementById("submit-button");
-const deleteButton = document.getElementById("delete-button"); 
+const deleteButton = document.getElementById("delete-button");
+const number = document.getElementById("number");
 
 document.addEventListener("click", (e) => {
     var clickedObject = e.target;
@@ -96,16 +149,10 @@ document.addEventListener("click", (e) => {
                 number.textContent += "-"
             }
             number.textContent += clickedObject.textContent;
-
             clickedObject.style.color = "black";
             clickedObject.style.textShadow = "none";
-            hideNumbersOnMove = true;
-            setTimeout(() => { //we need to delay the new random placement after clicking because the mousemove will show the new spawning of the clicked number if not
-                placeNumsInGrid();
-                hideNumbersOnMove = false;
-            }, 200);
+            moveObjectsAfterClick();
         }
-        
     }
     if(clickedObject === submitButton){
         if(number.textContent.length === 12){
@@ -115,13 +162,16 @@ document.addEventListener("click", (e) => {
         else{
             alert("Unable to submit number, please ensure length is correct!");
         }
+        clickedObject.style.visibility = "hidden";
+        moveObjectsAfterClick();
     }
     if(clickedObject === deleteButton){
         number.textContent = number.textContent.slice(0, -1);
         if(number.textContent.at(number.textContent.length - 1) === "-"){
             number.textContent = number.textContent.slice(0, -1);
-            console.log(number.textContent.length)
         }
+        clickedObject.style.visibility = "hidden";
+        moveObjectsAfterClick();
     }
 });
 
